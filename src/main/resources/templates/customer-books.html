@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Browse Books</title>
+</head>
+
+<body>
+
+<h1>Available Books</h1>
+
+<div th:each="b : ${books}" style="border:1px solid #ddd;padding:15px;margin:10px;">
+
+	<h3 th:text="${b.title}"></h3>
+	    <p><b>Author:</b> <span th:text="${b.author}"></span></p>
+	    <p><b>Category:</b> <span th:text="${b.category}"></span></p>
+	    <p><b>Price:</b> ₹<span th:text="${b.price}"></span></p>
+
+    <!-- ✅ FIXED form -->
+    <form th:action="@{/cart/add}" method="post">
+        <input type="hidden" name="customerId" th:value="${customerId}">
+        <input type="hidden" name="bookId" th:value="${b.id}">
+        <button type="submit">Add to Cart</button>
+    </form>
+	<form th:action="@{/customer/buy}" method="post">
+	        <input type="hidden" name="customerId" th:value="${customerId}">
+	        <input type="hidden" name="bookId" th:value="${b.id}">
+	        <button type="submit">Buy Now</button>
+			
+	    </form>
+			<a th:href="@{'/customer/book/' + ${b.id}}">View Details & Reviews</a>
+
+    
+
+</div>
+
+</body>
+</html>

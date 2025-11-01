@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Book</title>
+
+    <style>
+        body { font-family: Arial; background:#f0f2f5; }
+        .box {
+            width:400px; margin:50px auto; background:white; padding:20px;
+            border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.2);
+        }
+        input, button {
+            width:100%; padding:10px; margin-top:10px;
+        }
+        button { background:#27ae60; border:none; color:white; cursor:pointer; }
+        button:hover { background:#1e8449; }
+        h3 { text-align: center; margin-top: 20px; }
+        .divider {
+            height:2px; background:#ccc; margin:20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Upload Book</h2>
+
+    <!-- ✅ Manual Entry Form -->
+    <form action="/dealer/upload-book" method="post">
+        <input type="hidden" name="dealerId" th:value="${dealerId}">
+
+        <input name="title" placeholder="Book Title" required>
+        <input name="author" placeholder="Author" required>
+        <input name="category" placeholder="Category" required>
+
+        <button type="submit">Submit Manually</button>
+    </form>
+
+    <div class="divider"></div>
+
+    <h3>OR Upload Excel / CSV</h3>
+
+    <!-- ✅ Excel/CSV Upload Form -->
+    <form action="/dealer/upload-books-file" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="dealerId" th:value="${dealerId}">
+        <input type="file" name="file" accept=".csv, .xls, .xlsx" required>
+
+        <button type="submit">Upload File</button>
+    </form>
+
+    <p th:text="${message}" style="color:green; text-align:center;"></p>
+</div>
+
+</body>
+</html>

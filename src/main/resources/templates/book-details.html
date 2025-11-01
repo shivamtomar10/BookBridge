@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Details</title>
+</head>
+<body>
+
+<h1 th:text="${book.title}"></h1>
+<p><b>Author:</b> <span th:text="${book.author}"></span></p>
+<p><b>Category:</b> <span th:text="${book.category}"></span></p>
+<p><b>Price:</b> ₹<span th:text="${book.price}"></span></p>
+<p><b>Description:</b> <span th:text="${book.description}"></span></p>
+
+<hr>
+
+<h3>Customer Reviews</h3>
+
+<div th:if="${reviews.size() == 0}">
+    <p>No reviews yet.</p>
+</div>
+
+<div th:each="r : ${reviews}" style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <b th:text="'Rating: ' + ${r.rating} + ' ⭐'"></b>
+    <p th:text="${r.comment}"></p>
+    <small th:text="${r.date}"></small>
+</div>
+
+<hr>
+
+<h3>Write a Review</h3>
+
+<form th:action="@{/customer/review}" method="post">
+
+    <input type="hidden" name="customerId" th:value="${customerId}">
+    <input type="hidden" name="bookId" th:value="${book.id}">
+
+    Rating:
+    <select name="rating">
+        <option value="1">1 ⭐</option>
+        <option value="2">2 ⭐</option>
+        <option value="3">3 ⭐</option>
+        <option value="4">4 ⭐</option>
+        <option value="5">5 ⭐</option>
+    </select>
+
+    <br><br>
+
+    <textarea name="comment" placeholder="Write your review..." rows="3" cols="40"></textarea>
+
+    <br><br>
+
+    <button type="submit">Submit Review</button>
+</form>
+
+</body>
+</html>

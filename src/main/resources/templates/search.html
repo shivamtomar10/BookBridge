@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Search Books</title></head>
+<body>
+<h1>Search Books</h1>
+<form action="/search/results" method="get">
+<input type="text" name="keyword" placeholder="Enter title...">
+<button type="submit">Search</button>
+</form>
+<div th:each="b : ${results}">
+<h3 th:text="${b.title}"></h3>
+<a th:href="@{'/book/details/' + ${b.id}}">View</a>
+</div>
+</body>
+</html>

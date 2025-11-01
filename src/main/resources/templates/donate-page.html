@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Donate a Book</title></head>
+
+<body>
+
+<h1>Donate a Book</h1>
+
+<form action="/customer/donate" method="post">
+
+    <input name="title" placeholder="Book Title"><br><br>
+    <input name="author" placeholder="Author"><br><br>
+    <textarea name="description" placeholder="Description"></textarea><br><br>
+
+    <button type="submit">Submit Donation</button>
+</form>
+
+</body>
+</html>

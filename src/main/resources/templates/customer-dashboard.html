@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f7fa;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2c3e50;
+            padding: 15px 30px;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            width: 250px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">Books Bridge - Customer Dashboard</div>
+        <a href="/" style="color:white;text-decoration:none;">Home</a>
+    </div>
+	<h2 style="text-align:center;">Welcome, <span th:text="${session.customer.name}"></span>!</h2>
+
+
+    <h2 style="text-align:center;" th:text="${message}"></h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Browse Books</h3>
+			<a href="/customer/books">View Books</a>
+
+        </div>
+
+        <div class="card">
+            <h3>Donate a Book</h3>
+            <a href="/customer/donate">Donate</a>
+        </div>
+
+        <div class="card">
+            <h3>Your Orders</h3>
+            <a href="#">Coming Soon</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

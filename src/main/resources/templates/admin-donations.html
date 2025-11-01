@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Book Donations</title>
+
+    <style>
+        body { font-family: Arial; background: #f4f6f9; margin: 0; padding: 20px; }
+        h1 { color: #2c3e50; }
+        
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 20px;
+            background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background: #2c3e50; color: white; }
+
+        .btn {
+            padding: 8px 14px; border-radius: 6px; color: white; 
+            text-decoration: none; margin-right: 6px;
+        }
+        .approve { background: #27ae60; }
+        .reject { background: #c0392b; }
+    </style>
+</head>
+
+<body>
+
+    <h1>📚 Pending Book Donations</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Dealer</th>
+            <th>Actions</th>
+        </tr>
+
+        <tr th:each="b : ${pending}">
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.title}"></td>
+            <td th:text="${b.author}"></td>
+            <td th:text="${b.genre}"></td>
+            <td th:text="${b.price}"></td>
+            <td th:text="${b.dealerId}"></td>
+
+            <td>
+				<a th:href="@{'/admin/donations/approve/' + ${b.id}}">✅ Approve</a> |
+				          <a th:href="@{'/admin/donations/reject/' + ${b.id}}">❌ Reject</a>
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

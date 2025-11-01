@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .navbar {
+            background: #2c3e50;
+            padding: 15px 25px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .menu-box {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 25px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        Admin Dashboard
+    </div>
+
+    <div class="container">
+        <h1>Welcome, Admin</h1>
+
+        <div class="menu-box">
+            <a href="/admin/books" class="menu-item">📚 Manage Books</a>
+			<a href="/admin/donations" class="menu-item">📚 Manage Books Donations</a>
+            <a href="/admin/requests" class="menu-item">🛒 Dealer Requests</a>
+        </div>
+		<form action="/admin/report" method="get">
+		    <button type="submit">Download Order Report (CSV)</button>
+		</form>
+    </div>
+
+</body>
+</html>

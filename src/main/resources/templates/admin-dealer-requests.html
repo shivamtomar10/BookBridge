@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dealer Book Requests</title>
+
+    <style>
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        a.btn {
+            padding: 6px 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .approve {
+            background-color: green;
+        }
+        .reject {
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+<h2 style="text-align:center;">Dealer Pending Book Requests</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Dealer</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="b : ${requests}">
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.dealer.name}"></td>
+            <td th:text="${b.title}"></td>
+            <td th:text="${b.author}"></td>
+            <td th:text="${b.price}"></td>
+
+            <td>
+                <a th:href="@{'/admin/request/approve/' + ${b.id}}" class="btn approve">Approve</a>
+                <a th:href="@{'/admin/request/reject/' + ${b.id}}" class="btn reject">Reject</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
